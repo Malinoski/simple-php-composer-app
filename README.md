@@ -1,3 +1,5 @@
+This is a simple PHP project with some PHPUnit test. The project uses composer for install PHPUnit. 
+
 - How was installed composer localy ( [https://getcomposer.org/download/](https://getcomposer.org/download/) )
 
 ```
@@ -17,12 +19,25 @@ composer require --dev phpunit/phpunit ^5
 ./vendor/bin/phpunit --version
 ```
 
-- How to execute tests
+- How to execute manual tests
 
 ```
 cd [PROJECT ROOT]
 ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/EmailTest
 ```
+
+- How to execute automated test in Jenkins DashBoard (require xUnit plugin)
+	- New job
+	- Name as "simple-php-composer-app" and select "Pipeline"
+	- On Pileline section
+		- Select "Pipeline script ... SCM"
+		- Select git
+			- Reposiroty URL "https://github.com/Malinoski/simple-php-composer-app.git"
+	- Save
+	- Open Open Blue Ocean and run
+			
+
+
 
 
 
