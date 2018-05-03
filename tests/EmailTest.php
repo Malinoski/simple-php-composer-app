@@ -9,7 +9,7 @@ final class EmailTest extends TestCase
         // Its ok if constructor NOT launch an exception (for instance, a bad email)
         $this->assertInstanceOf(
             Email::class,
-            Email::fromString('user@example.com')
+            Email::fromString('userexample.com')
             );
     }
     
