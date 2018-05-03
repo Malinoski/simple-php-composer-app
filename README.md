@@ -1,4 +1,4 @@
-- Install composer localy ( [https://getcomposer.org/download/](https://getcomposer.org/download/) )
+- How was installed composer localy ( [https://getcomposer.org/download/](https://getcomposer.org/download/) )
 
 ```
 cd [PROJECT ROOT]
@@ -9,7 +9,7 @@ mkdir bin
 php composer-setup.php --install-dir=bin --filename=composer
 ```
 
-- Install PHPUnit ( [https://phpunit.de/getting-started/phpunit-5.html](https://phpunit.de/getting-started/phpunit-5.html) )
+- How was installed PHPUnit ( [https://phpunit.de/getting-started/phpunit-5.html](https://phpunit.de/getting-started/phpunit-5.html) )
 
 ```
 cd [PROJECT ROOT]
@@ -17,7 +17,7 @@ composer require --dev phpunit/phpunit ^5
 ./vendor/bin/phpunit --version
 ```
 
-- Execute tests
+- How to execute tests
 
 ```
 cd [PROJECT ROOT]
