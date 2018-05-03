@@ -7,7 +7,9 @@ pipeline {
             }
         }
         stage('test') {
-            sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
+        		steps {
+            		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
+            	}
         }
     }
 }
