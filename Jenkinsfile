@@ -1,5 +1,6 @@
 pipeline {
-    agent { docker { image 'php:5.6' } }
+    /* agent { docker { image 'php:5.6' } } */
+    agent { dockerfile true }
     stages {
         stage('build') {
             steps {
