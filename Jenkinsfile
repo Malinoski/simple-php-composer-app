@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-            		echo 'Hie!'
-                sh 'php --version'
+            		/* sh 'php --version' */
+            		sh 'ls'
             }
         }
         stage('test') {
