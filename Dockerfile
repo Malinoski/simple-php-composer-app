@@ -45,6 +45,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV PATH $PATH:/root/composer/vendor/bin
 
 # Start the service
-EXPOSE 80
-CMD ["-D", "FOREGROUND"]
-ENTRYPOINT ["/usr/sbin/apache2ctl"]
+# EXPOSE 80
+# CMD ["-D", "FOREGROUND"]
+# ENTRYPOINT ["/usr/sbin/apache2ctl"]
