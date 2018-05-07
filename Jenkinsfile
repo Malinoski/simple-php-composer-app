@@ -1,8 +1,6 @@
 pipeline {
     agent { 
-    		dockerfile {    			 
-    			label 'my-defined-labelTEST'
-    		}
+    		dockerfile true 
     	}
     stages {
         stage('build') {
@@ -22,8 +20,9 @@ pipeline {
                 sh '''
                     echo "Testing!"
                     ls -lah
-                    pwd                    
-                    echo "end testing"
+                    pwd
+                    docker build -t intranet-sdumont:v1 .                    
+                    echo "end testing"                    
                 '''            
             }
         }
