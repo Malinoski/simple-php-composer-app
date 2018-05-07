@@ -16,7 +16,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying'                
+                echo 'Deploying'
+                sh 'docker build -t intranet-sd .'  
+                sh 'docker run -tid -p 88:80 --name="intranet-sd" intranet-sd /usr/sbin/apache2ctl -D FOREGROUND'              
             }
         }
     }
