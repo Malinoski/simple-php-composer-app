@@ -1,6 +1,8 @@
 pipeline {
     agent { 
-    		dockerfile true 
+    		dockerfile {    			 
+    			label 'my-defined-labelTEST'
+    		}
     	}
     stages {
         stage('build') {
@@ -14,9 +16,9 @@ pipeline {
             		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
             	}
         }
-        stage('Deploy') {
+        stage('deploy') {
             steps {
-                echo 'Deploying TEST\n'
+                echo 'Deploying'
                 sh '''
                     echo "Testing!"
                     ls -lah
