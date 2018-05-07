@@ -16,14 +16,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying TEST'
-                docker -v
-                /*
-                sh 'docker -v'
-                 
-                sh 'docker build -t intranet-sd .'  
-                sh 'docker run -tid -p 88:80 --name="intranet-sd" intranet-sd /usr/sbin/apache2ctl -D FOREGROUND'
-                */              
+                echo 'Deploying TEST\n'
+                sh '''
+                    echo "Testing!"
+                    ls -lah
+                    pwd                    
+                    echo "end testing"
+                '''            
             }
         }
     }
