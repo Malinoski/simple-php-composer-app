@@ -20,6 +20,17 @@ pipeline {
             		sh 'date'            		
         		}
         }
+        
+        stage('test') {
+        		agent{
+	    			docker {
+	        			image 'malinoski/myapache:latest'
+	        		}            		
+            	}
+        		steps {
+            		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
+            	}
+        }
     	
         
     }
