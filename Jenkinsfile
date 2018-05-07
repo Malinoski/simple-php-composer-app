@@ -2,19 +2,15 @@
 
 pipeline {
     agent none
-    	stages {
-    	
+    	stages {    	
     		stage('build') {
     			agent{
 	    			dockerfile true	
             	}
             	steps {
             		sh 'php --version'
-            		/* TODO: check the required PHP plugins 
-            		sh '''
-            			tar -zcvf archive.tar.gz .            			
-            		'''
-            		*/
+            		/* TODO: check the required PHP plugins*/
+            		sh 'tar -zcvf archive.tar.gz .'            		            		
         		}
         }
         
