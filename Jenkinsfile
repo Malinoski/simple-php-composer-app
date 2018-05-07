@@ -21,7 +21,7 @@ pipeline {
                     echo "Testing!"
                     ls -lah
                     pwd
-                    docker build -t intranet-sdumont:v1 .                    
+                    docker build -privileged -t intranet-sdumont:v1 .                    
                     echo "end testing"                    
                 '''            
             }
