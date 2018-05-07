@@ -1,0 +1,9 @@
+<Files "Jenkinsfile">
+	Order Allow,Deny
+	Deny from all
+</Files>
+
+<Files "Dockerfile">
+	Order Allow,Deny
+	Deny from all
+</Files>

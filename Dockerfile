@@ -44,6 +44,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && ln -s $(composer config --global home) /root/composer
 ENV PATH $PATH:/root/composer/vendor/bin
 
+COPY system.tar.gz /tmp
+RUN mkdir /var/www/html/system \
+	&& tar -zxvf /tmp/system.tar.gz -C /var/www/html/system; \
+	&& chown -R www-data:www-data /var/www/html/system
+
 # Start the service
 # EXPOSE 80
 # CMD ["-D", "FOREGROUND"]
