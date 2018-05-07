@@ -1,7 +1,6 @@
 pipeline {
     agent { 
-    		dockerfile true
-    		label 'simple-php-composer-app' 
+    		dockerfile true 
     	}
     stages {
         stage('build') {
