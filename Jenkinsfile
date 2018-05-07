@@ -31,6 +31,17 @@ pipeline {
             		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
             	}
         }
+        
+        stage('deploy') {
+	    		agent{
+	    			docker {
+	        			image 'malinoski/myapache:latest'
+	        		}            		
+            	}
+	      	steps {
+	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
+	      	}
+	    }
     	
         
     }
