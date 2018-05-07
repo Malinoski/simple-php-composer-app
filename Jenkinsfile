@@ -1,12 +1,9 @@
 pipeline {
-    agent { 
-    		dockerfile true 
-    	}
+    agent none
     	stages {
         stage('build') {
             steps {
-            		sh 'php --version'    
-            		sh 'date'            		
+            		sh 'php --version'            		
             }
         }
         stage('test') {
@@ -14,16 +11,11 @@ pipeline {
             		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
             	}
         }
-        stage('deploy') {
-            steps {
-            		sh '''
-                    echo "Testing!"
-                    ls -lah
-                    pwd
-                    docker build -privileged -t intranet-sdumont:v1 .                    
-                    echo "end testing"                    
-                '''
-            }
-        }
+        stage('Docker Build') {
+	    		agent any
+	      	steps {
+	        		sh 'docker build -t malinoski/myapache:latest .'
+	      	}
+	    }
     }
 }
