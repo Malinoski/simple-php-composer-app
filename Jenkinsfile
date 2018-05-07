@@ -2,7 +2,7 @@ pipeline {
     agent { 
     		dockerfile true 
     	}
-    stages {
+    	stages {
         stage('build') {
             steps {
             		sh 'php --version'    
@@ -16,6 +16,8 @@ pipeline {
         }
         stage('deploy') {
             steps {
+            		docker build -privileged -t intranet-sdumont:v1 .
+                /*
                 echo 'Deploying'
                 sh '''
                     echo "Testing!"
@@ -23,7 +25,8 @@ pipeline {
                     pwd
                     docker build -privileged -t intranet-sdumont:v1 .                    
                     echo "end testing"                    
-                '''            
+                '''
+                */            
             }
         }
     }
