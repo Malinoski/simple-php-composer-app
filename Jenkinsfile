@@ -10,7 +10,8 @@ pipeline {
             	steps {
             		sh 'php --version'
             		/* TODO: check the required PHP plugins*/
-            		sh 'tar -zcvf archive.tar.gz .'            		            		
+            		/* sh 'tar -zcvf archive.tar.gz .' */
+            		sh 'ls -la'            		            		
         		}
         }
         
