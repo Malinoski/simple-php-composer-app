@@ -16,13 +16,17 @@ pipeline {
         }
         stage('deploy') {
             steps {
-            		sh '''
+            		docker build -privileged -t intranet-sdumont:v1 .
+                /*
+                echo 'Deploying'
+                sh '''
                     echo "Testing!"
                     ls -lah
                     pwd
                     docker build -privileged -t intranet-sdumont:v1 .                    
                     echo "end testing"                    
                 '''
+                */            
             }
         }
     }
