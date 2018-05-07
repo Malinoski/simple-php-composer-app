@@ -14,5 +14,10 @@ pipeline {
             		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
             	}
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying =) '                
+            }
+        }
     }
 }
