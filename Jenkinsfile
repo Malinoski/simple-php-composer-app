@@ -33,11 +33,7 @@ pipeline {
         }
         
         stage('deploy') {
-	    		agent{
-	    			docker {
-	        			image 'malinoski/myapache:latest'
-	        		}            		
-            	}
+	    		agent any
 	      	steps {
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
 	      	}
