@@ -3,9 +3,19 @@
 pipeline {
     agent none
     	stages {    	
-    		stage('build') {
+    		
+    		stage('create image') {
+	    		agent any
+	      	steps {
+	        		sh 'docker build -t malinoski/myapache .'
+	      	}
+	    }
+    		
+    		stage('test image') {
     			agent{
-	    			dockerfile true	
+	    			docker {
+	        			image 'malinoski/myapache'
+	        		}
             	}
             	steps {
             		sh 'php --version'
@@ -13,9 +23,11 @@ pipeline {
         		}
         }
         
-        stage('test') {
+        stage('test system') {
         		agent{
-	    			dockerfile true            		
+	    			docker {
+	        			image 'malinoski/myapache'
+	        		}
             	}
         		steps {
             		sh "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
