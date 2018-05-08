@@ -40,8 +40,11 @@ pipeline {
 	      	steps {
 	      		sh 'docker stop myapache-container || true && docker rm myapache-container || true;'
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
-	        		echo 'Delete dangling images (<none> as id)'
-	        		sh 'docker rmi $(docker images -q -f dangling=true)'
+	        		echo 'Delete dangling images - <none> as id. Ref: http://www.totallymoney.com/blog/cleaning-up-docker-images-on-jenkins-build-machines/) '
+	        		script{
+	        			docker rmi $(docker images -q -f dangling=true)
+	        		}
+	        		
 	      	}
 	    }
     	
