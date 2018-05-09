@@ -53,7 +53,7 @@ pipeline {
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
 	        		
 	        		/* Delete dangling images - <none> as id. Ref: http://www.totallymoney.com/blog/cleaning-up-docker-images-on-jenkins-build-machines/) */
-	        		sh 'docker rmi $(docker images -q -f dangling=true)'
+	        		sh 'if [[ $(docker images -q -f dangling=true) != 0 ]]; then echo "No dagling containers"; else docker rmi $(docker images -q -f dangling=true); fi;'
 	        		
 	      	}
 	    }
