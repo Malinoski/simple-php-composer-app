@@ -46,8 +46,10 @@ pipeline {
 	    		agent any
 	      	steps {
 	      		
-	      		/* Stop and delete previous container*/
-	      		sh 'docker stop myapache-container || true && docker rm myapache-container || true;'
+	      		sh '''
+	      			echo 'Stop and delete previous container'
+	      			docker stop myapache-container || true && docker rm myapache-container || true;
+	      		'''
 	        		
 	        		/* Run container */
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
