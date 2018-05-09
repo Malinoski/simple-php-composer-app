@@ -46,10 +46,8 @@ pipeline {
 	    		agent any
 	      	steps {
 	      		
-	      		sh '''
-	      			echo 'Stop and delete previous container'
-	      			docker stop myapache-container || true && docker rm myapache-container || true;
-	      		'''
+	      		/* Stop and delete previous container*/
+	      		sh 'docker stop myapache-container || true && docker rm myapache-container || true;'
 	        		
 	        		/* Run container */
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
@@ -61,7 +59,7 @@ pipeline {
 	        		*/
 	        		sh '''
 	        			dangling=$(docker images -q -f dangling=true); # Store in var if has dangling images
-	        			if [[ $? != 0 ]];  # he exit code of the last command (zero for success, non-zero for failure).
+	        			if [[ $? != 0 ]];  # exit code of the last command (zero for success, non-zero for failure).
 	        				then echo "No dagling containers"; # do nothing
 	        				else docker rmi $(docker images -q -f dangling=true); # remove dangling images  
 	        			fi;
