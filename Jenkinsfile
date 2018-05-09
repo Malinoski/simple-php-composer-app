@@ -52,10 +52,17 @@ pipeline {
 	        		/* Run container */
 	        		sh 'docker run -tid -p 85:80 --name="myapache-container" malinoski/myapache:latest /usr/sbin/apache2ctl -D FOREGROUND'
 	        		
-	        		/* Delete dangling images - <none> as id. Ref: http://www.totallymoney.com/blog/cleaning-up-docker-images-on-jenkins-build-machines/) */
+	        		/* Delete dangling images - <none> as id. 
+	        		Ref: 
+	        		http://www.totallymoney.com/blog/cleaning-up-docker-images-on-jenkins-build-machines/
+	        		https://stackoverflow.com/questions/12137431/test-if-a-command-outputs-an-empty-string
+	        		*/
 	        		sh '''
-	        			dangling=$(docker images -q -f dangling=true);
-	        			if [[ $? != 0 ]]; then echo "No dagling containers"; else docker rmi $(docker images -q -f dangling=true); fi;
+	        			dangling=$(docker images -q -f dangling=true); # Store in var if has dangling images
+	        			if [[ $? != 0 ]];  # he exit code of the last command (zero for success, non-zero for failure).
+	        				then echo "No dagling containers"; # do nothing
+	        				else docker rmi $(docker images -q -f dangling=true); # remove dangling images  
+	        			fi;
 	        		'''
 	        		
 	      	}
